@@ -9,38 +9,38 @@ Tableau
 # Authors
 
 This report is prepared by
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
+* [Satchel Spencer](https://github.com/satchelspencer)
+* [John Murphy](https://github.com/johnmurph27)
+* [Nicole Woytarowicz](https://github.com/nicolele)
+* [Tristan Wagar](https://github.com/twagar95)
+* [Sushant Mittal](https://github.com/sumi6109)
 
-# (Question)
+#What is the average delta? by Tristan
 
-(answer)
 
-# (Question)
+![screenshot](avgdelta.png)
+# Which release has the longest observation period on average? by Nicole
+ 
 
-(answer)
 
-# (Question)
+![screenshot](avgdeltas_NIC.png)
+# Which release had the most inconsistent data? by Satchel
 
-(answer)
 
-# (Question)
 
-(answer)
+![screenshot](satchel.png)
+# What are the problem systems, those with the lowest percentage of usable data? by John
 
-# (Question)
 
-(answer)
 
+![screenshot](john.png)
+# What are the problem systems, those with the lowest percentage of usable data? by John
+
+
+
+![screenshot](sushant.png)
 # Further Analysis
 
-Our team determines the following questions are too complex for Tableau and
-require custom scripts to be written.
+Our team determines the following questions are too complex for Tableau and require custom scripts to be written.
 
-* (Question)
-* (Question)
-* (Question)
-* (Question)
+Of the entries with usable data, what is the average observation period for each release?
