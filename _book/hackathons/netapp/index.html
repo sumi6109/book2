@@ -54,7 +54,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.1" data-basepath="../.." data-revision="Mon Oct 05 2015 16:57:38 GMT-0600 (MDT)">
+    <div class="book" data-level="2.1" data-basepath="../.." data-revision="Fri Oct 09 2015 19:08:18 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -379,25 +379,38 @@ like to get some help on.</p>
 <p>Listen to his presentation carefully. Write down the answers to the following
 questions to show your team&apos;s understanding of the basics of the problem.</p>
 <h2 id="what-is-the-problem">What is the problem?</h2>
+<p>Brian wants to track how the systems are being used and the system usage data is inconsistent.</p>
 <h2 id="why-is-the-problem-importnat">Why is the problem importnat?</h2>
+<p>Because it&apos;s important to have consistent and accurate information about how the systems are being used.</p>
 <h2 id="what-dataset-has-been-made-available">What dataset has been made available?</h2>
+<p>Brian has provided a spreadsheet of the systems (not individual drives) and their observation times and information.</p>
 <h2 id="what-specific-questions-are-being-raised">What specific questions are being raised?</h2>
+<p>How many ASUPs can we use?</p>
+<p>Can we identify patterns in the unusuable ones so that we can make them usable?</p>
+<p>Are there patterns that can help us improve?</p>
 <h1 id="q-a-session">Q/A session</h1>
 <p>We will run a Q/A session. Before the session, compile a list of questions you
 want to ask. Then, teams will take turn to ask Brian follow up questions.
 Each team gets to ask one question each time. Write down the questions your team
 wanted to ask and the answers you received. If another team happens to ask the
 same question, simply write down the answer you heard.</p>
-<h2 id="-my-team-s-question">(My team&apos;s question)</h2>
-<h2 id="-my-team-s-question">(My team&apos;s question)</h2>
-<h2 id="-my-team-s-question">(My team&apos;s question)</h2>
+<h2 id="if-there-are-multiple-entries-for-a-particular-system-serial-number-can-you-average-those-entires-to-determine-usage-information">If there are multiple entries for a particular system serial number, can you average those entires to determine usage information?</h2>
+<p>Yes. There are multiple records for particular systems and they are used to determine usage information.</p>
+<h2 id="can-you-get-the-expected-value-of-writes-to-a-drive-over-time-to-predict-failure">Can you get the expected value of writes to a drive over time to predict failure?</h2>
+<p>No. There could be a large number of writes initially or over some random short period of time that would skew data, since they cannot predict how customers will use the drives.</p>
+<h2 id="if-you-have-observation-periods-longer-than-24-hours-can-you-assume-that-it-is-indicative-of-a-normal-24-hour-cycle-i-e-usage-changing-on-weekends">If you have observation periods longer than 24 hours, can you assume that it is indicative of a normal 24 hour cycle (i.e., usage changing on weekends)?</h2>
+<p>There is a change in time calculated between the observation time and the base time for the system to account for this.</p>
 <h1 id="approach">Approach</h1>
 <p>Based on the information you&apos;ve obtained during the Q/A session, come up with
 plan how your team will tackle this problem.</p>
 <h2 id="how-should-the-dataset-be-imported-into-tableau">How should the dataset be imported into Tableau?</h2>
+<p>Because the data set is a csv, it can just be directly imported into Tableau.</p>
 <h2 id="how-should-the-work-be-distributed-among-the-team-members">How should the work be distributed among the team members?</h2>
+<p>One team member per question.</p>
 <h2 id="what-types-of-charts-or-visualizations-to-use-to-support-the-answer">What types of charts or visualizations to use to support the answer?</h2>
+<p>We will evaluate what visualizations are the best upon importing the data.</p>
 <h2 id="what-questions-may-be-too-complex-for-tableau-and-may-require-custom-scripts-to-be-written">What questions may be too complex for Tableau and may require custom scripts to be written?</h2>
+<p>Questions that involve complex statistical analysis on the data would require more math than Tableau is capable of.</p>
 
                     
                     </section>
@@ -431,10 +444,6 @@ plan how your team will tackle this problem.</p>
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
-    
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

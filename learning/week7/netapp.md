@@ -34,7 +34,7 @@ This report is prepared by
 
 
 ![screenshot](john.png)
-# What are the problem systems, those with the lowest percentage of usable data? by John
+#Which system took most time to transmit the data? by Sushant
 
 
 
