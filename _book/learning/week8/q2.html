@@ -68,7 +68,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.2.3" data-basepath="../.." data-revision="Sun Oct 18 2015 20:32:15 GMT-0600 (MDT)">
+    <div class="book" data-level="1.2.3" data-basepath="../.." data-revision="Sun Oct 18 2015 21:47:41 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -537,7 +537,7 @@ function viz(type, city){
     }
 
     function computeLabel(d, i) {
-        return d[0] + &apos;: &apos; + _.size(d[1])
+        return d[0] + &apos; has  &apos; + _.size(d[1]) + type 
     }
 
     var viz = _.map(cities, function(d, i){                
@@ -565,7 +565,7 @@ $(&apos;button#viz&apos;).click(function(){
     var city = $(&apos;#city&apos;).val()
     //var state = $(&apos;#state&apos;).val()    
     viz(type, city)
-})</code></pre><script>var code ="items = 'not loaded yet'\n\n$.get('http://bigdatahci2015.github.io/data/yelp/yelp_academic_dataset_business.5000.json.lines.txt')\n    .success(function(data){        \n        var lines = data.trim().split('\\n')\n\n        // convert text lines to json arrays and save them in `items`\n        items = _.map(lines, JSON.parse)\n\n        console.log('number of items loaded:', items.length)\n\n        console.log('first item', items[0])\n     })\n     .error(function(e){\n         console.error(e)\n     })\n\nfunction viz(type, city){    \n\n    // define a template string\n    var tplString = '<g transform=\"translate(0 ${d.y})\"> \\\n                    <text y=\"20\" x=\"0\">${d.label}</text> \\\n                    <rect x=\"200\"   \\\n                         width=\"${d.width}\" \\\n                         height=\"20\"    \\\n                         style=\"fill:${d.color};    \\\n                                stroke-width:1; \\\n                                stroke:rgb(0,0,0)\" />   \\\n                    </g>'\n\n    // compile the string to get a template function\n    var template = _.template(tplString)\n\n    var openFilter = _.filter(items, function(d) {\n        return ((d.city==city)&&_.includes(d.categories,type))\n    })\n\n    var cities = _.pairs(_.groupBy(openFilter, 'city'))\n\n    console.log('cities', cities)\n    \n    function computeX(d, i) {\n        return 0\n    }\n\n    function computeWidth(d, i) {        \n        return _.size(d[1])\n    }\n\n    function computeY(d, i) {\n        return i * 20\n    }\n\n    function computeColor(d, i) {\n        return 'red'\n    }\n\n    function computeLabel(d, i) {\n        return d[0] + ': ' + _.size(d[1])\n    }\n\n    var viz = _.map(cities, function(d, i){                \n                return {\n                    x: computeX(d, i),\n                    y: computeY(d, i),\n                    width: computeWidth(d, i),\n                    color: computeColor(d, i),\n                    label: computeLabel(d, i),\n                }\n             })\n    console.log('viz', viz)\n\n    var result = _.map(viz, function(d){\n             // invoke the compiled template function on each viz data\n             return template({d: d})\n         })\n    console.log('result', result)\n\n    $('.myviz').html('<svg width=\"100%\" height=\"100%\">' + result + '</svg>')\n}\n\n$('button#viz').click(function(){    \n    var type = $('#type').val()\n    var city = $('#city').val()\n    //var state = $('#state').val()    \n    viz(type, city)\n})"</script></p>
+})</code></pre><script>var code ="items = 'not loaded yet'\n\n$.get('http://bigdatahci2015.github.io/data/yelp/yelp_academic_dataset_business.5000.json.lines.txt')\n    .success(function(data){        \n        var lines = data.trim().split('\\n')\n\n        // convert text lines to json arrays and save them in `items`\n        items = _.map(lines, JSON.parse)\n\n        console.log('number of items loaded:', items.length)\n\n        console.log('first item', items[0])\n     })\n     .error(function(e){\n         console.error(e)\n     })\n\nfunction viz(type, city){    \n\n    // define a template string\n    var tplString = '<g transform=\"translate(0 ${d.y})\"> \\\n                    <text y=\"20\" x=\"0\">${d.label}</text> \\\n                    <rect x=\"200\"   \\\n                         width=\"${d.width}\" \\\n                         height=\"20\"    \\\n                         style=\"fill:${d.color};    \\\n                                stroke-width:1; \\\n                                stroke:rgb(0,0,0)\" />   \\\n                    </g>'\n\n    // compile the string to get a template function\n    var template = _.template(tplString)\n\n    var openFilter = _.filter(items, function(d) {\n        return ((d.city==city)&&_.includes(d.categories,type))\n    })\n\n    var cities = _.pairs(_.groupBy(openFilter, 'city'))\n\n    console.log('cities', cities)\n    \n    function computeX(d, i) {\n        return 0\n    }\n\n    function computeWidth(d, i) {        \n        return _.size(d[1])\n    }\n\n    function computeY(d, i) {\n        return i * 20\n    }\n\n    function computeColor(d, i) {\n        return 'red'\n    }\n\n    function computeLabel(d, i) {\n        return d[0] + ' has  ' + _.size(d[1]) + type \n    }\n\n    var viz = _.map(cities, function(d, i){                \n                return {\n                    x: computeX(d, i),\n                    y: computeY(d, i),\n                    width: computeWidth(d, i),\n                    color: computeColor(d, i),\n                    label: computeLabel(d, i),\n                }\n             })\n    console.log('viz', viz)\n\n    var result = _.map(viz, function(d){\n             // invoke the compiled template function on each viz data\n             return template({d: d})\n         })\n    console.log('result', result)\n\n    $('.myviz').html('<svg width=\"100%\" height=\"100%\">' + result + '</svg>')\n}\n\n$('button#viz').click(function(){    \n    var type = $('#type').val()\n    var city = $('#city').val()\n    //var state = $('#state').val()    \n    viz(type, city)\n})"</script></p>
 <h1 id="authors">Authors</h1>
 <ul>
 <li><a href="https://github.com/sumi6109" target="_blank">Sushant Mittal</a></li>
@@ -601,6 +601,10 @@ $(&apos;button#viz&apos;).click(function(){
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-bigdata/jquery.jsonview.js"></script>
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
     
 
     
