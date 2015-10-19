@@ -3,17 +3,18 @@
 Pick one question class and build an exploratory visualization interface for it.
 The question class you pick must have at least three variables that can be changed.
 
-## (Question class)
+## At time X on day Y how many businesses are open in city Z
+
 
 <div style="border:1px grey solid; padding:5px;">
     <div><h5>X</h5>
-        <input id="arg1" type="text" value="something"/>
+        <input id="time" type="text" value="11"/>
     </div>
     <div><h5>Y</h5>
-        <input id="arg2" type="text" value="something"/>
+        <input id="day" type="text" value="Sunday"/>
     </div>
     <div><h5>Z</h5>
-        <input id="arg2" type="text" value="something"/>
+        <input id="state" type="text" value="PA"/>
     </div>    
     <div style="margin:20px;">
         <button id="viz">Vizualize</button>
@@ -26,8 +27,6 @@ Data is not loaded yet
 
 {% script %}
 items = 'not loaded yet'
-
-console.log('lodash version:', _.VERSION)
 
 $.get('http://bigdatahci2015.github.io/data/yelp/yelp_academic_dataset_business.5000.json.lines.txt')
     .success(function(data){        
@@ -44,28 +43,36 @@ $.get('http://bigdatahci2015.github.io/data/yelp/yelp_academic_dataset_business.
          console.error(e)
      })
 
-function viz(arg1, arg2, arg3){    
+function viz(time, day, state){    
 
     // define a template string
     var tplString = '<g transform="translate(0 ${d.y})"> \
-                    <text y="20">${d.label}</text> \
-                    <rect x="30"   \
+                    <text y="20" x="0">${d.label}</text> \
+                    <rect x="200"   \
                          width="${d.width}" \
                          height="20"    \
                          style="fill:${d.color};    \
-                                stroke-width:3; \
+                                stroke-width:1; \
                                 stroke:rgb(0,0,0)" />   \
                     </g>'
 
     // compile the string to get a template function
     var template = _.template(tplString)
 
+    var openFilter = _.filter(items, function(d) {
+        return d.hours[day] && time >= d.hours[day].open.split(':')[0] && time <= d.hours[day].close.split(':')[0] && d.state == state;
+    })
+
+    var cities = _.pairs(_.groupBy(openFilter, 'city'))
+
+    console.log('cities', cities)
+    
     function computeX(d, i) {
         return 0
     }
 
     function computeWidth(d, i) {        
-        return i * 20 + 20
+        return _.size(d[1])
     }
 
     function computeY(d, i) {
@@ -77,20 +84,16 @@ function viz(arg1, arg2, arg3){
     }
 
     function computeLabel(d, i) {
-        return 'f' + i
+        return d[0] + ': ' + _.size(d[1])
     }
 
-    // TODO: modify the logic here based on your UI
-    // take the first 20 items to visualize    
-    items = _.take(items, 20)
-
-    var viz = _.map(items, function(d, i){                
+    var viz = _.map(cities, function(d, i){                
                 return {
                     x: computeX(d, i),
                     y: computeY(d, i),
                     width: computeWidth(d, i),
                     color: computeColor(d, i),
-                    label: computeLabel(d, i)
+                    label: computeLabel(d, i),
                 }
              })
     console.log('viz', viz)
@@ -105,19 +108,18 @@ function viz(arg1, arg2, arg3){
 }
 
 $('button#viz').click(function(){    
-    var arg1 = 'TODO'
-    var arg2 = 'TODO'
-    var arg3 = 'TODO'    
-    viz(arg1, arg2, arg3)
-})  
-
+    var time = $('#time').val()
+    var day = $('#day').val()
+    var state = $('#state').val()    
+    viz(time, day, state)
+})
 {% endscript %}
 
 # Authors
 
 This UI is developed by
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
+* [Satchel Spencer](https://github.com/satchelspencer)
+* [John Murphy](https://github.com/johnmurph27)
+* [Nicole Woytarowicz](https://github.com/nicolele)
+* [Tristan Wagar](https://github.com/twagar95)
+* [Sushant Mittal](https://github.com/sumi6109)
